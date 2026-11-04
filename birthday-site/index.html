@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fffaf1">
+  <meta name="description" content="쿨쿨슨하는 쉬었음청년을 깨우쇼잉">
+  <meta property="og:title" content="너를 위한 작은 생일 파티 🎂">
+  <meta property="og:description" content="쿨쿨슨 쉬었음청년을 위해 준비한 아주 작은 모험. 눌러서 초대장을 열어 봐!">
+  <title>파티파티</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/character-atlas.png" as="image">
+  <link rel="stylesheet" href="style.css">
+  <script src="birthday-config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-heart" viewBox="0 0 16 16"><path d="M2 2h4v2h4V2h4v2h2v6h-2v2h-2v2h-2v2H6v-2H4v-2H2v-2H0V4h2z" fill="currentColor"/></symbol>
+    <symbol id="i-star" viewBox="0 0 20 20"><path d="M8 0h4v6h6v2h2v4h-4v6h-4v-2H8v2H4v-6H0V8h2V6h6z" fill="currentColor"/><path d="M9 4h2v5h5v2h-5v4H9v-4H4V9h5z" fill="#fff2b1"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M8 2h2v2h2v2h2v4h-2v2h-2v2H8v-4H2V6h6z" fill="currentColor"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 20 20"><path d="M2 7h4V5h2V3h3v14H8v-2H6v-2H2zM14 6h2v8h-2zM17 3h2v14h-2z" fill="currentColor"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 20 20"><path d="M2 7h4V5h2V3h3v14H8v-2H6v-2H2zM14 7h2v2h2V7h2v2h-2v2h2v2h-2v-2h-2v2h-2v-2h2V9h-2z" fill="currentColor"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 20 20"><path d="M5 2h9v2h3v3h2v7h-2v3h-3v2H7v-2H4v-3h3v2h7v-2h2V7h-2V5H7v2h3v3H1V1h3v5h1z" fill="currentColor"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 20"><path d="M2 2h20v2h2v14h-2v2H2v-2H0V4h2z" fill="currentColor"/><path d="M3 5h3v2h3v2h6V7h3V5h3v3h-3v2h-3v2H9v-2H6V8H3z" fill="#fff9ed"/></symbol>
+    <symbol id="i-cake" viewBox="0 0 24 26"><path d="M11 0h2v4h-2z" fill="#e8ae45"/><path d="M11 5h2v6h-2z" fill="#c980a4"/><path d="M4 10h16v2h2v11H2V12h2z" fill="#e7a0b2"/><path d="M4 10h16v3h2v3h-4v-2h-4v2h-4v-2H6v2H2v-3h2z" fill="#fff5d7"/><path d="M0 23h24v3H0z" fill="#a9b88d"/><path d="M4 19h16v2H4z" fill="#f7c8cb"/></symbol>
+    <symbol id="i-close" viewBox="0 0 16 16"><path d="M2 0h2v2h2v2h4V2h2V0h2v2h2v2h-2v2h-2v4h2v2h2v2h-2v2h-2v-2h-2v-2H6v2H4v2H2v-2H0v-2h2v-2h2V6H2V4H0V2h2z" fill="currentColor"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="파티파티 처음으로"><svg class="brand-cake"><use href="#i-cake"/></svg><span>tiny birthday<span class="brand-dot">.</span></span></a>
+    <div class="header-right"><span class="edition">A LITTLE GIFT FOR YOU</span><button class="sound-button" id="sound-button" aria-pressed="false" aria-label="배경 음악 켜기"><svg><use href="#i-mute"/></svg><span id="sound-label">소리 꺼짐</span></button></div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="main-title">
+      <span class="float-daisy daisy-left" aria-hidden="true">✿</span>
+      <span class="float-star star-right" aria-hidden="true"><svg><use href="#i-star"/></svg></span>
+      <p class="eyebrow"><span></span> TODAY IS YOUR SPECIAL DAY <span></span></p>
+      <h1 id="main-title">오늘은, <span>마!!!! 네가 주인공!</span></h1>
+      <p class="intro-copy">파티파티.<br class="mobile-break"> 쿨쿨슨 청년을 꺠우쇼잉</p>
+    </section>
+
+    <section class="game-shell" aria-label="생일 파티 미니게임">
+      <div class="game-chrome"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span>birthday_party.exe</span><div class="tiny-hearts" aria-label="사랑 가득"><svg><use href="#i-heart"/></svg><svg><use href="#i-heart"/></svg><svg><use href="#i-heart"/></svg></div></div>
+      <div class="room" id="room" data-state="asleep">
+        <canvas id="room-canvas" width="768" height="352" aria-hidden="true"></canvas>
+        <div class="room-vignette" aria-hidden="true"></div>
+        <span class="room-label" id="room-label"><i></i> 꿈나라에 접속 중</span>
+        <div class="speech" id="speech" aria-live="polite"><span id="speech-text">집가고싶다...<br>수업 언제 끝나냐… zZ</span><span class="speech-heart" aria-hidden="true">♡</span></div>
+        <div class="sleep-z" id="sleep-z" aria-hidden="true"><span>z</span><span>Z</span><span>z</span></div>
+        <div class="sparkle-field" id="sparkle-field" aria-label="모을 수 있는 생일 별"></div>
+        <div class="character-shadow" id="character-shadow" aria-hidden="true"></div>
+        <button id="character-button" class="character-button sleeping" aria-label="자는 캐릭터 깨우기"><span class="character-sprite" id="character-sprite" data-pose="sleep" role="img" aria-label="노란 옷을 입고 자고 있는 양갈래 머리 캐릭터"></span></button>
+        <span class="tap-hint" id="tap-hint"><svg><use href="#i-arrow"/></svg> 톡, 눌러서 깨워 줘!</span>
+        <div class="cake-wrap" id="cake-wrap" hidden><canvas id="cake-canvas" width="112" height="92" aria-label="세 개의 촛불이 켜진 딸기 케이크"></canvas><div class="candle-buttons"><button data-candle="0" aria-label="첫 번째 촛불 끄기"></button><button data-candle="1" aria-label="두 번째 촛불 끄기"></button><button data-candle="2" aria-label="세 번째 촛불 끄기"></button></div></div>
+        <div class="celebration-banner" id="celebration-banner" hidden>HAPPY BIRTHDAY!</div>
+        <div class="particles" id="particles" aria-hidden="true"></div>
+        <div class="room-bottom"><span id="room-caption">a little nap before the party</span><span>♡ made with love</span></div>
+      </div>
+      <div class="game-controls">
+        <div class="quest-info"><span class="quest-overline" id="quest-overline">YOUR FIRST QUEST</span><p id="quest-text">쉿! 아빠 잔다</p></div>
+        <button class="primary-button" id="action-button"><span>합법적쉬었음청년 깨우기</span><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </section>
+
+    <nav class="journey" aria-label="게임 진행 상황"><div class="journey-step active" id="step-1" aria-current="step"><span class="step-number">01</span><span>잠꾸러기 깨우기</span><svg class="step-check"><use href="#i-heart"/></svg></div><span class="journey-dots" aria-hidden="true">······</span><div class="journey-step" id="step-2"><span class="step-number">02</span><span>생일 별 모으기</span><svg class="step-check"><use href="#i-heart"/></svg></div><span class="journey-dots" aria-hidden="true">······</span><div class="journey-step" id="step-3"><span class="step-number">03</span><span>소원 빌기</span><svg class="step-check"><use href="#i-heart"/></svg></div></nav>
+    <p class="gentle-note" id="gentle-note">마 ㅃㄹㅃㄹ 해라 마</p>
+  </main>
+
+  <footer><span>small pixels, a whole lot of love <svg><use href="#i-heart"/></svg></span><div><button class="text-button" id="restart-button"><svg><use href="#i-reset"/></svg> 처음부터</button></div></footer>
+
+  <dialog id="letter-dialog" class="letter-dialog">
+    <button class="close-button" data-close="letter-dialog" aria-label="편지 닫기"><svg><use href="#i-close"/></svg></button>
+    <div class="letter-stamp"><svg><use href="#i-cake"/></svg><span>WITH LOVE</span></div>
+    <p class="letter-eyebrow">A LETTER, JUST FOR YOU</p>
+    <h2 id="letter-title">생일 축하해!</h2>
+    <div class="letter-divider"><svg><use href="#i-heart"/></svg></div>
+    <p class="letter-to" id="letter-to">Zㅏ기에게.</p>
+    <p class="letter-body" id="letter-body"></p>
+    <p class="letter-from" id="letter-from">조교시간에 만들고 있는 무례한 대학원생이 ♡</p>
+    <div class="letter-illustration" aria-hidden="true"><span class="mini-sprite"></span><span>오늘의 행복 +100</span><svg><use href="#i-star"/></svg></div>
+    <button class="primary-button letter-done" data-close="letter-dialog">마음에 쏙 담아 두기 <svg><use href="#i-heart"/></svg></button>
+  </dialog>
+
+  <dialog id="restart-dialog" class="restart-dialog"><h2>파티를 다시 시작할까?</h2><p>모은 별과 촛불은 처음으로 돌아가요.<br>이름과 편지는 그대로 간직할게요.</p><div class="dialog-actions"><button class="secondary-button" data-close="restart-dialog">계속 놀기</button><button class="primary-button" id="confirm-restart">다시 시작</button></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
